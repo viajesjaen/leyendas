@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0d403d">
+<title>La Cruz del Pósito · Leyendas de Jaén</title>
+<link rel="stylesheet" href="css/styles.css">
+<!-- OpenCV.js: reconocimiento visual en el navegador -->
+<script async src="https://docs.opencv.org/4.x/opencv.js" onload="window.dispatchEvent(new Event('opencv-ready'))"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#inicio"><span class="brand-mark">✦</span><span><strong>LEYENDAS DE JAÉN</strong><small>REALIDAD AUMENTADA</small></span></a>
+  <button class="icon-btn" id="helpBtn" aria-label="Ayuda">?</button>
+</header>
+
+<main>
+<section id="inicio" class="screen hero active">
+  <div class="hero-photo"></div><div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="eyebrow">PATRIMONIO · HISTORIA · REALIDAD AUMENTADA</p>
+    <h1>La Cruz<br>del Pósito</h1>
+    <p class="lead">Enfoca la Cruz con tu móvil y deja que la historia aparezca ante ti.</p>
+    <button class="primary" data-go="ficha">✦ Comenzar experiencia</button>
+    <p class="small-note">La cámara necesita permiso y una conexión para cargar el motor de reconocimiento.</p>
+  </div>
+</section>
+
+<section id="ficha" class="screen page">
+<div class="page-inner">
+<button class="back" data-go="inicio">← Volver</button>
+<div class="cover-card">
+  <div class="cover-art photo-art"></div>
+  <div class="cover-copy">
+    <p class="eyebrow">UNA LEYENDA DE JAÉN</p><h2>La Cruz del Pósito</h2>
+    <p>Entra en la experiencia y apunta la cámara hacia el lugar. El navegador buscará automáticamente los rasgos visuales de la imagen de referencia.</p>
+    <button class="primary full" data-go="camera">📷 Activar realidad aumentada</button>
+  </div>
+</div>
+<div class="action-grid">
+<button class="action-card" data-go="audio"><span>🎧</span><b>Escuchar</b><small>Narración</small></button>
+<button class="action-card" data-go="historia"><span>📖</span><b>Leer</b><small>La leyenda</small></button>
+<button class="action-card" data-go="video"><span>▶</span><b>Ver vídeo</b><small>Recreación</small></button>
+<button class="action-card" data-go="galeria"><span>🖼</span><b>Fotografía</b><small>Referencia</small></button>
+</div>
+<div class="info-card"><h3>🎯 Reconocimiento automático</h3><p>La aplicación utiliza la fotografía proporcionada como imagen objetivo. No hay botón de reconocimiento manual: la búsqueda se realiza automáticamente mientras la cámara está activa.</p></div>
+</div>
+</section>
+
+<section id="camera" class="screen camera-screen">
+<video id="cameraVideo" autoplay playsinline muted></video>
+<canvas id="frameCanvas" class="hidden-canvas"></canvas>
+<canvas id="arCanvas"></canvas>
+<div class="camera-shade"></div>
+<div class="camera-ui">
+ <div class="camera-top"><button class="round-btn" data-go="ficha">×</button><span class="camera-title">REALIDAD AUMENTADA</span><button class="round-btn" id="switchCamera">↻</button></div>
+ <div class="target-frame" id="targetFrame"><span></span><span></span><span></span><span></span><div class="target-message" id="targetMessage">Buscando la Cruz del Pósito…</div></div>
+ <div class="camera-bottom"><div class="status-pill" id="recognitionStatus">Cargando reconocimiento…</div><p id="cameraStatus">Solicitando acceso a la cámara.</p></div>
+</div>
+<div class="ar-panel hidden" id="arPanel">
+ <button class="panel-close" id="closeAr">×</button><span class="success-pill">✦ CRUZ RECONOCIDA</span>
+ <h2>La Cruz del Pósito</h2><p>La experiencia de realidad aumentada está activa.</p>
+ <button class="panel-action" data-go="audio">▶ Escuchar la leyenda <span>›</span></button>
+ <button class="panel-action" data-go="historia">▣ Leer la historia <span>›</span></button>
+ <button class="panel-action" data-go="galeria">▧ Ver fotografía <span>›</span></button>
+ <button class="panel-action" data-go="video">▹ Ver vídeo <span>›</span></button>
+ <button class="panel-action" data-go="explorar">⌖ Mira alrededor <span>›</span></button>
+</div>
+<div class="ar-float hidden" id="arFloat">
+  <span>✦</span><strong>La Cruz del Pósito</strong><small>Toca para abrir la historia</small>
+</div>
+</section>
+
+<section id="audio" class="screen page dark-page"><div class="page-inner narrow">
+<button class="back light" data-go="ficha">← Volver</button><p class="eyebrow">NARRACIÓN</p><h2>La Cruz del Pósito</h2>
+<div class="audio-art photo-art"></div><div class="audio-player"><div class="fake-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="time"><span id="currentTime">00:00</span><span>02:45</span></div><input id="audioProgress" type="range" min="0" max="165" value="0"><button class="play-big" id="playAudio">▶</button>
+<p class="quote">«Cuenta la tradición que...»</p><p class="small-note">Zona preparada para incorporar la narración definitiva.</p></div></div></section>
+
+<section id="historia" class="screen page book-page"><div class="page-inner narrow">
+<button class="back" data-go="ficha">← Volver</button><p class="eyebrow">LA LEYENDA</p><h2>La Cruz del Pósito</h2>
+<img class="story-photo" src="assets/cruz-del-posito-original.jpg" alt="Fotografía de la Cruz del Pósito">
+<article><p><strong>Cuenta la tradición que, en el siglo XVIII, un hombre de Jaén cometió un grave error y decidió redimirse con una acción generosa.</strong></p>
+<p>El relato, transmitido de generación en generación, dio origen a una de las historias tradicionales asociadas a este lugar.</p>
+<p>Aquí incorporaremos la versión definitiva de la leyenda preparada para el proyecto.</p></article>
+</div></section>
+
+<section id="video" class="screen page"><div class="page-inner narrow"><button class="back" data-go="ficha">← Volver</button><p class="eyebrow">RECREACIÓN</p><h2>La Cruz del Pósito</h2>
+<div class="video-placeholder"><div class="play-circle">▶</div><span>VÍDEO DE LA LEYENDA</span></div><h3>Recreación de la historia</h3><p>Zona preparada para incorporar el vídeo definitivo.</p></div></section>
+
+<section id="galeria" class="screen page"><div class="page-inner"><button class="back" data-go="ficha">← Volver</button><p class="eyebrow">IMAGEN DE REFERENCIA</p><h2>La Cruz del Pósito</h2>
+<div class="single-photo"><img src="assets/cruz-del-posito-original.jpg" alt="Fotografía original de la Cruz del Pósito"></div>
+<p class="center-note">Fotografía utilizada como imagen objetivo del reconocimiento visual.</p></div></section>
+
+<section id="explorar" class="screen camera-screen mock-explore"><div class="explore-bg photo-art"></div><div class="camera-ui">
+<div class="camera-top"><button class="round-btn" data-go="ficha">×</button><span class="camera-title">EXPLORA EL ENTORNO</span></div>
+<div class="hotspot hs1">El Pósito</div><div class="hotspot hs2">Cruz del Pósito</div><div class="hotspot hs3">La leyenda</div>
+<div class="explore-bottom"><p>Mueve el móvil y descubre los puntos relacionados.</p><button class="primary" data-go="ficha">Volver a la leyenda</button></div></div></section>
+</main>
+
+<nav class="bottom-nav"><button data-go="inicio">⌂<small>Inicio</small></button><button data-go="ficha">▣<small>Leyenda</small></button><button data-go="camera">📷<small>AR</small></button></nav>
+<dialog id="helpDialog"><button class="dialog-close" id="closeHelp">×</button><h2>Cómo funciona</h2><p>La cámara analiza automáticamente la imagen que está delante del teléfono y busca coincidencias con la fotografía objetivo incluida en el proyecto.</p><p>Cuando encuentra suficientes puntos coincidentes y una geometría consistente, aparece la capa de realidad aumentada.</p></dialog>
+<script src="js/app.js"></script>
+</body></html>
