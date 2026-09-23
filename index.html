@@ -43,6 +43,7 @@
 <button class="action-card" data-go="historia"><span>📖</span><b>Leer</b><small>La leyenda</small></button>
 <button class="action-card" data-go="video"><span>▶</span><b>Ver vídeo</b><small>Recreación</small></button>
 <button class="action-card" data-go="galeria"><span>🖼</span><b>Fotografía</b><small>Referencia</small></button>
+<button class="action-card sponsor-card" data-go="establecimientos"><span>📍</span><b>Establecimientos</b><small>Patrocinadores</small></button>
 </div>
 <div class="info-card"><h3>🎯 Reconocimiento automático</h3><p>La aplicación utiliza la fotografía proporcionada como imagen objetivo. No hay botón de reconocimiento manual: la búsqueda se realiza automáticamente mientras la cámara está activa.</p></div>
 </div>
@@ -65,6 +66,7 @@
  <button class="panel-action" data-go="historia">▣ Leer la historia <span>›</span></button>
  <button class="panel-action" data-go="galeria">▧ Ver fotografía <span>›</span></button>
  <button class="panel-action" data-go="video">▹ Ver vídeo <span>›</span></button>
+ <button class="panel-action" data-go="establecimientos">📍 Establecimientos cercanos <span>›</span></button>
  <button class="panel-action" data-go="explorar">⌖ Mira alrededor <span>›</span></button>
 </div>
 <div class="ar-float hidden" id="arFloat">
@@ -92,6 +94,18 @@
 <section id="galeria" class="screen page"><div class="page-inner"><button class="back" data-go="ficha">← Volver</button><p class="eyebrow">IMAGEN DE REFERENCIA</p><h2>La Cruz del Pósito</h2>
 <div class="single-photo"><img src="assets/cruz-del-posito-original.jpg" alt="Fotografía original de la Cruz del Pósito"></div>
 <p class="center-note">Fotografía utilizada como imagen objetivo del reconocimiento visual.</p></div></section>
+
+<section id="establecimientos" class="screen page"><div class="page-inner narrow">
+<button class="back" data-go="ficha">← Volver</button>
+<p class="eyebrow">APOYA LA HISTORIA LOCAL</p><h2>Establecimientos relacionados</h2>
+<p class="intro-copy">Descubre establecimientos vinculados a esta leyenda. Este espacio está preparado para incorporar patrocinadores, comercios y negocios colaboradores.</p>
+<div class="sponsor-list">
+  <article class="sponsor-item featured-sponsor"><div class="sponsor-icon">✦</div><div class="sponsor-body"><span class="sponsor-tag">PATROCINADOR PRINCIPAL</span><h3>Tu establecimiento aquí</h3><p>Espacio destacado para un patrocinador de la experiencia de la Cruz del Pósito.</p><a class="sponsor-link" href="#" onclick="return false">Ver establecimiento <span>›</span></a></div></article>
+  <article class="sponsor-item"><div class="sponsor-icon">☕</div><div class="sponsor-body"><span class="sponsor-tag">COLABORADOR</span><h3>Nombre del establecimiento</h3><p>Descripción breve, especialidad u oferta vinculada a la experiencia.</p><a class="sponsor-link" href="#" onclick="return false">Visitar web <span>›</span></a></div></article>
+  <article class="sponsor-item"><div class="sponsor-icon">🍽</div><div class="sponsor-body"><span class="sponsor-tag">COLABORADOR</span><h3>Nombre del establecimiento</h3><p>Aquí podremos mostrar dirección, horario, web y una promoción para visitantes.</p><a class="sponsor-link" href="#" onclick="return false">Ver promoción <span>›</span></a></div></article>
+</div>
+<div class="sponsor-note"><strong>¿Quieres aparecer aquí?</strong><span>Este bloque está diseñado para que cada leyenda pueda tener sus propios patrocinadores.</span></div>
+</div></section>
 
 <section id="explorar" class="screen camera-screen mock-explore"><div class="explore-bg photo-art"></div><div class="camera-ui">
 <div class="camera-top"><button class="round-btn" data-go="ficha">×</button><span class="camera-title">EXPLORA EL ENTORNO</span></div>
