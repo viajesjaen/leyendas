@@ -48,3 +48,17 @@ Para probar desde un móvil, usa HTTPS en el alojamiento. `localhost` del ordena
 ## Siguiente mejora recomendada
 
 Para una experiencia de producción, conviene sustituir el reconocimiento ORB del prototipo por un motor WebAR especializado con seguimiento de imagen y, si se dispone de una fotografía más nítida de la Cruz, regenerar el objetivo de seguimiento. Esta v3 ya sirve para validar el flujo real de cámara + reconocimiento + activación automática de contenido.
+
+
+## Nuevo módulo de patrocinadores
+
+Cada leyenda dispone ahora de un botón **Establecimientos**, integrado junto a Escuchar, Leer, Vídeo y Fotografía. El mismo acceso aparece también dentro del panel que se muestra al reconocer la Cruz mediante AR.
+
+La pantalla está preparada para mostrar patrocinadores o establecimientos relacionados con cada leyenda, incluyendo:
+- nombre
+- categoría (patrocinador principal / colaborador)
+- descripción
+- enlace a web, ficha, promoción o reserva
+- icono o futura imagen/logo
+
+Los textos de ejemplo de `index.html` se pueden sustituir por los datos reales de cada patrocinador. Para futuras leyendas, se puede reutilizar exactamente el mismo módulo con una lista de establecimientos específica para cada una.
